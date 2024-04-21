@@ -1,0 +1,11 @@
+<header>
+    <h2><a href="<%= root_path %>">CodingTests</a></h2>
+    <div>
+        <span>Welcome, <%= "Admin " if @admin %><a href="<%= users_profile_path %>"><%= @username %></a>!</span>
+    <% if @admin %>
+        <a href="<%= problems_path %>">Problems</a> |
+        <a href="<%= users_admin_path %>">Users</a> |
+    <% end %>
+        <a href="<%= users_logout_path %>">Sign out</a>
+    </div>
+</header>

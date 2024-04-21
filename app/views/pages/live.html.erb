@@ -1,0 +1,28 @@
+<% content_for :title, "Live" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", "slide", "problem_solve" %>
+<% end %>
+<% content_for :javascripts do %>
+    <script type="text/javascript">
+        let record = [];
+        let live = true;
+        let room_name = "<%= "#{@problem.id}_#{@user_id}" %>";
+    </script>
+    <%= javascript_include_tag "socket.io", "receive_live", "slide", "watch_live" %>
+<% end %>
+
+<%= render partial: "shared/header" %>
+
+<main>
+    <aside>
+        <div id="problems">
+            <h2>Problems:</h1>
+            <%= render partial: "shared/problems_list" %>
+        </div>
+        <div>
+            <h2>Other live users:</h2>
+            <%= render partial: "shared/live_list" %>
+        </div>
+    </aside>
+    <%= render partial: "shared/recording", locals: {  h1_text: "Live from #{@watching.username}:" } %>
+</main>

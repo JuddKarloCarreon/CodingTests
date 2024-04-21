@@ -1,0 +1,24 @@
+<ul<%= " id=#{problems_id}" unless local_assigns[:problems_id].blank? %>>
+<% [0,1,2].each do |val| %>
+    <li>
+        <span>
+            <i class="arrow up"></i>
+            <%= @categories[val] %>
+        </span>
+        <ul>
+        <% @problems[val].each do |problem| %>
+            <% if local_assigns[:problems_id].blank? %>
+                <li><a href="<%= (local_assigns[:profile].blank?) ? "/pages/#{problem.id}/solve" : "/users/profile/#{problem.id}" %>"><%= problem.title %></a></li>
+            <% else %>
+                <li>
+                    <%= render problem %>
+                    <p>
+                        <%= link_to "Show this problem", problem, data: {'turbo' => false} %>
+                    </p>
+                </li>
+            <% end %>
+        <% end %>
+        </ul>
+    </li>
+<% end %>
+</ul>

@@ -1,0 +1,19 @@
+<% content_for :title, "Problem: show" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", 'problem_show' %>
+<% end %>
+
+<%= render "shared/header" %>
+
+<main>
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @problem %>
+
+  <div>
+    <%= link_to "Edit this problem", edit_problem_path(@problem), data: { 'turbolinks' => false } %> |
+    <%= link_to "Back to problems", problems_path %>
+
+    <%= button_to "Destroy this problem", @problem, method: :delete %>
+  </div>
+</main>

@@ -1,0 +1,18 @@
+<div id="<%= dom_id problem %>">
+    <p>
+        <strong>Title:</strong>
+        <%= problem.title %>
+    </p>
+
+    <div>
+        <strong>
+            <i class="arrow up"></i>
+            Description:
+        </strong>
+        <pre><%= problem.description %></pre>
+    </div>
+    <p>
+        <strong>Test Count:</strong>
+        <%= problem.tests.count %>
+    </p>
+</div>

@@ -1,0 +1,21 @@
+<% content_for :title, "Problem: new" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", "problem_create" %>
+<% end %>
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "problem_create" %>
+<% end %>
+
+<%= render "shared/header" %>
+
+<main>
+  <h1>New problem</h1>
+
+  <%= render "form", problem: @problem %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to problems", problems_path %>
+  </div>
+</main>

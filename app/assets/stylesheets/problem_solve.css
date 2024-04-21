@@ -1,0 +1,109 @@
+main {
+    height: calc(100vh - 2em - 20px);
+}
+main > section,
+main > aside {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+main > section {
+    width: calc(70% - 15px);
+    box-shadow: 0px 4px 36px 0px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-left: 20px;
+}
+main > aside {
+    width: calc(30% - 15px);
+}
+main > aside > * {
+    box-shadow: 0px 4px 36px 0px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 10px 20px;
+    height: calc(50% - 10px);
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+main h2 {
+    margin-bottom: 10px;
+}
+h1 {
+    margin-bottom: 10px;
+    width: calc(100% - 80px);
+}
+form {
+    width: 100%;
+    height: calc(70% - 1em - 10px);
+}
+form textarea {
+    margin-left: 20px;
+    min-height: 30%;
+    max-height: calc(100% - 5em);
+    resize: none;
+    width: calc(100% - 20px);
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+div:has(> input[type="submit"]) {
+    position: absolute;
+    top: -35px;
+    right: 0px;
+}
+input[type="submit"],
+#reset_button {
+    padding: 2px 10px;
+}
+.errors {
+    color: red;
+}
+.success {
+    color: green;
+}
+.expected {
+    margin-block: 2px;
+    font-size: 0.9em;
+    color: rgb(105, 105, 105);
+}
+#problems {
+    margin-bottom: 20px;
+}
+#solutions ul,
+#solutions li {
+    width: 99%;
+}
+#solutions li * {
+    display: inline-block;
+    overflow-x: hidden;
+    top: 3px;
+}
+#solutions a {
+    width: 50%;
+    overflow-wrap: normal;
+}
+#solutions span {
+    text-align: center;
+    width: 15%;
+    top: 5px;
+}
+#tests,
+#results {
+    display: inline-block;
+    width: 50%;
+    height: calc(30% - 1em - 10px);
+    vertical-align: top;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    border: 1px solid black;
+    padding: 5px;
+}
+#results p {
+    margin-bottom: 5px;
+}
+#reset_button {
+    margin-right: 20px;
+}
+#replay > #player {
+    max-height: calc(100% - 3em);
+}

@@ -1,0 +1,66 @@
+<%= form_with(model: problem) do |form| %>
+  <% if problem.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
+
+      <ul>
+        <% problem.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+        <% unless @test_errors.blank? then @test_errors.each do |error| %>
+          <li><%= error.join(', ') %></li>
+        <% end end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <fieldset>
+        <legend>Category</legend>
+        <label class="radio_label"><input type="radio" name="problem[category]" value="0" <%= (problem.category.blank? || problem.category == 0) ? "checked" : "" %> /> Basic</label>
+        <label class="radio_label"><input type="radio" name="problem[category]" value="1" <%= (problem.category == 1) ? "checked" : "" %> /> Intermediate</label>
+        <label class="radio_label"><input type="radio" name="problem[category]" value="2" <%= (problem.category == 2) ? "checked" : "" %> /> Advanced</label>
+    </fieldset>
+  </div>
+
+  <div>
+    <%= form.label :function_name, style: "display: block" %>
+    <%= form.text_field :function_name %>
+  </div>
+
+  <div>
+    <%= form.label :arg_names, style: "display: block" %>
+    <%= form.text_field :arg_names %>
+  </div>
+
+  <fieldset>
+      <legend>Tests:</legend>
+      <fieldset>
+          <legend>Test 1:</legend>
+          <div>
+              <label style="display: block" for="test_args_1">Args</label>
+              <input type="text" name="test[args][]" id="test_args_1" value="<%= (@tests.blank?) ? "" : JSON.parse(@tests[0].args).to_s %>" />
+          </div>
+
+          <div>
+              <label style="display: block" for="test_result_1">Result</label>
+              <input type="text" name="test[result][]" id="test_result_1" value="<%= (@tests.blank?) ? "" : JSON.parse(@tests[0].result).to_s %>" />
+          </div>
+      </fieldset>
+      <button>Add</button>
+  </fieldset>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+main > ul {
+    margin-top: 20px;
+}
+ul > li > ul > li {
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+div:has(> pre) {
+    margin-block: 10px 15px;
+}

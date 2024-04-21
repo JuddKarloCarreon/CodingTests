@@ -1,0 +1,132 @@
+@keyframes blink {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+h2 {
+    font-size: 1.5em;
+}
+.selected_speed {
+    font-weight: 900;
+}
+.hidden {
+    display: none;
+}
+.expected {
+    margin-block: 2px;
+    font-size: 0.9em;
+    color: rgb(105, 105, 105);
+}
+.success {
+    color: green;
+}
+.errors {
+    color: red;
+}
+span#cursor {
+    position: absolute;
+	animation-name: blink;
+	animation-duration: 800ms;
+	animation-iteration-count: infinite;
+	opacity: 1;
+    left: -2px;
+    font-size: 1.1em;
+    top: -4px;
+}
+#slidebar {
+    position: absolute;
+    height: 3px;
+    width: calc(100% + 2px);
+    left: -1px;
+    top: 0px;
+}
+#player {
+    aspect-ratio: 1 / 1;
+    border: 1px solid black;
+    max-height: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+}
+#player > * {
+    border: 1px solid black;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#player *:not(#slidebar) {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+#player > div > div {
+    height: calc(100% - 1.5em - 5px);
+    padding: 5px 10px;
+}
+#player h2 {
+    border-bottom: 1px solid black;
+}
+#screen {
+    height: calc(70% - 1em);
+}
+#screen pre {
+    margin-inline: 10px;
+    padding: 5px 1px;
+    border: 1px solid black;
+    padding-bottom: 20px;
+    overflow-x: auto;
+    white-space: pre;
+}
+#tests,
+#results {
+    display: inline-block;
+    width: 50%;
+    height: calc(30% - 1em);
+    vertical-align: top;
+    overflow-wrap: break-word;
+}
+#results .notice {
+    margin-left: 10px;
+}
+#results p,
+#tests p {
+    margin-top: 5px;
+}
+#results p span[alt_id="num"],
+#tests p span[alt_id="num"] {
+    color: grey;
+}
+#controls {
+    height: 2em;
+    overflow: unset;
+}
+#controls > *:not(#slidebar) {
+    top: 3px;
+    line-height: calc(2em - 3px);
+    padding-inline: 5px;
+}
+#play_pause {
+    display: inline-block;
+    width: 17px;
+    cursor: pointer;
+}
+#time {
+    position: absolute;
+    right: 10px;
+}
+#speed > span {
+    cursor: pointer;
+}
+#submitting {
+    position: absolute;
+    height: calc(100% - 2em);
+    width: 100%;
+    background-color: rgba(126, 126, 126, 0.5);
+}
+#submitting > p {
+    position: absolute;
+    font-size: 1.6em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}

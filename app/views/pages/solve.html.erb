@@ -1,0 +1,61 @@
+<% content_for :title, "Solve" %>
+<% content_for :stylesheets do %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <%= stylesheet_link_tag "primary", "slide", "problem_solve" %>
+<% end %>
+<% content_for :javascripts do %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <script type="text/javascript">
+        let record = <%= @recording %>;
+        let room_name = "<%= "#{@problem.id}_#{@user_id}" %>";
+    </script>
+    <%= javascript_include_tag "socket.io", "slide", "problem_solve" %>
+<% end %>
+
+<%= render "shared/header" %>
+
+<main>
+    <aside>
+        <div id="problems">
+            <h2>Description:</h1>
+            <pre><%= @problem.description %></pre>
+        </div>
+        <div id="solutions">
+            <h2>Solutions from other users:</h2>
+            <%= render partial: "shared/other_solutions" %>
+        </div>
+    </aside>
+    <section>
+        <h1><%= @problem.title %></h1>
+        <form action="/pages/<%= @problem.id %>/solve" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <p>def <%= "#{@problem.function_name}(#{@problem.arg_names})" %></p>
+            <textarea name="code" spellcheck="false"><%= @solution.solution unless @solution.blank? %></textarea>
+            <p>end</p>
+            <div>
+                <button id="reset_button" type="button">Reset</button>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        <div id="tests">
+            <h2>Test Cases:</h2>
+            <div>
+            <% @problem.tests.each_with_index do |test, i| %>
+                <p>
+                    <span alt_id="num"><%= i + 1 %>:</span>
+                    <%= "#{@problem.function_name}(#{JSON.parse(test.args).to_s})" %>
+                </p>
+                <p class="expected">Expected: <%= JSON.parse(test.result).to_s %></p>
+            <% end %>
+            </div>
+        </div><!--
+        --><div id="results">
+            <h2>Results:</h2>
+            <div>
+            <% @problem.tests.each_with_index do |test, i| %>
+                <p><span alt_id="num"><%= i + 1 %>:</span></p>
+            <% end %>
+            </div>
+        </div>
+    </section>
+</main>

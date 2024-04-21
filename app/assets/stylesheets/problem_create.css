@@ -1,0 +1,81 @@
+h1 {
+    margin-bottom: 20px;
+}
+form {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-top: 10px;
+    width: 70vw;
+}
+form ul {
+    margin-bottom: 20px;
+}
+input, textarea {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    display: block;
+    padding-inline: 2px;
+}
+input[type="radio"] {
+    display: inline-block;
+}
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding-block: 5px;
+}
+textarea {
+    padding-block: 10px;
+    resize: vertical;
+    font-size: 0.9em;
+    min-height: 80px;
+}
+input[type="submit"] {
+    padding: 2px 5px;
+    width: 200px;
+    left: calc(100% - 200px);
+    margin-top: 10px;
+}
+label {
+    position: absolute;
+    z-index: 5;
+    left: 5px;
+    background: linear-gradient(180deg, #fbfbfb 0%, white 50%);
+    top: -8px;
+}
+fieldset {
+    padding: 15px 10px;
+    margin-bottom: 15px;
+}
+fieldset > fieldset {
+    padding: 15px 10px 0px;
+}
+button {
+    padding: 2px 5px;
+    margin-top: 10px;
+}
+button.remove {
+    display: inline-block;
+    position: absolute;
+    padding: 2px;
+    margin: 0px;
+    border-radius: 50%;
+    height: 1.6em;
+    aspect-ratio: 1 / 1;
+    background-color: #fbfbfb;
+    top: -18px;
+    right: -8px;
+    z-index: 5;
+}
+.errors {
+    color: red;
+}
+.radio_label {
+    position: relative;
+    top: unset;
+    left: unset;
+    display: block;
+    background: unset;
+}

@@ -1,0 +1,21 @@
+<% content_for :title, "Profile" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", "profile", "slide" %>
+<% end %>
+<% content_for :javascripts do %>
+<% unless @solution.blank? %>
+    <script type="text/javascript">
+        let record = JSON.parse(<%= @solution.recording.to_json.html_safe %>);
+    </script>
+<% end %>
+    <%= javascript_include_tag "slide" %>
+<% end %>
+<%= render partial: "shared/header" %>
+
+<main>
+    <section id="history">
+        <h1>History:</h1>
+        <%= render partial: "shared/problems_list", locals: { profile: true } %>
+    </section>
+    <%= render partial: "shared/recording" %>
+</main>

@@ -1,0 +1,50 @@
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "replay" %>
+<% end %>
+
+<% content_for :javascripts do %>
+    <%= javascript_include_tag "replay" %>
+<% end %>
+
+<section id="replay">
+    <h1><%= (local_assigns[:h1_text].blank?) ? "Replay:" : h1_text %></h1>
+<% unless @problem.blank? %>
+    <div id="player">
+        <div id="submitting" class="hidden"><p>Submitting...</p></div>
+        <div id="screen">
+            <h2><%= (local_assigns[:h2_text].blank?) ? "Code:" : h2_text %></h2>
+            <div>
+                <p>def <%= "#{@problem.function_name}(#{@problem.arg_names})" %></p>
+                <pre>
+                    
+                </pre>
+                <p>end</p>
+            </div>
+        </div>
+        <div id="tests">
+            <h2>Test Cases:</h2>
+            <div>
+            <% @problem.tests.each_with_index do |test, i| %>
+                <p>
+                    <span alt_id="num"><%= i + 1 %>:</span>
+                    <%= "#{@problem.function_name}(#{JSON.parse(test.args)})" %>
+                </p>
+                <p class="expected">Expected: <%= JSON.parse(test.result) %></p>
+            <% end %>
+            </div>
+        </div><!--
+        --><div id="results">
+            <h2>Results:</h2>
+            <div>
+            <% @problem.tests.each_with_index do |test, i| %>
+                <p><span alt_id="num"><%= i + 1 %>:</span></p>
+            <% end %>
+            </div>
+        </div>
+        <div id="controls">
+            <input type="range" id="slidebar" min="0" max="20" step="1" value="0">
+            <p><span id="play_pause">▷</span> <span id="speed"><span class="selected_speed">1x</span> <span>2x</span> <span>4x</span></span> <span id="time"><span id="curr_time">00:00</span> / <span id="max_time">00:00</span></span></p>
+        </div>
+    </div>
+<% end %>
+</section>

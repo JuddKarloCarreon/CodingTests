@@ -1,0 +1,12 @@
+<ul id="live_list">
+<% [0,1,2].each do |val| %>
+    <li>
+        <span>
+            <i class="arrow up"></i>
+            <%= @categories[val] %>
+        </span>
+        <ul>
+        </ul>
+    </li>
+<% end %>
+</ul>

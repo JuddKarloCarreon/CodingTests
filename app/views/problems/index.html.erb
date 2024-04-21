@@ -1,0 +1,20 @@
+<% content_for :title, "Problem: index" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", "slide", "problem_index" %>
+<% end %>
+<% content_for :javascripts do %>
+    <%= javascript_include_tag "slide" %>
+<% end %>
+
+<%= render "shared/header" %>
+
+<main>
+    <p style="color: green"><%= notice %></p>
+
+    <h1>Problems</h1>
+
+    <%= link_to "New problem", new_problem_path, data: {'turbo' => false} %>
+
+    <%= render partial: "shared/problems_list", locals: {problems_id: 'problems'} %>
+
+</main>

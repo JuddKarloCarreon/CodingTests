@@ -1,0 +1,61 @@
+<% content_for :title, "Users" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", "admin_user" %>
+<% end %>
+<% content_for :javascripts do %>
+    <%= javascript_include_tag "admin_user" %>
+<% end %>
+
+<%= render "shared/header" %>
+
+<main>
+    <h1>Admins:</h1>
+    <table>
+        <thead>
+            <th>Username</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= @self.username %></td>
+                <td class="action">
+                </td>
+            </tr>
+        <% @admins.each do |admin| %>
+            <tr>
+                <td><%= admin.username %></td>
+                <td class="action">
+                    <form action="/users/admin" method="post">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input type="hidden" name="user_id" value="<%= admin.id %>">
+                        <input type="hidden" name="do" value="remove">
+                        <input type="submit" value="Remove Admin">
+                    </form>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <h1>Users:</h1>
+    <table>
+        <thead>
+            <th>Username</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.username %></td>
+                <td class="action">
+                    <form action="/users/admin" method="post">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input type="hidden" name="user_id" value="<%= user.id %>">
+                        <input type="hidden" name="do" value="add">
+                        <input type="submit" value="Make Admin">
+                    </form>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</main>

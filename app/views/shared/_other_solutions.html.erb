@@ -1,0 +1,9 @@
+<ul>
+<% @other_solutions.each do |solution| %>
+    <li>
+        <a href="/pages/<%= @problem.id %>/solution/<%= solution[0] %>"><%= solution[1] %></a> |
+        <span><%= solution[2] %></span> |
+        <span><%= solution[3] %></span>
+    </li>
+<% end %>
+</ul>

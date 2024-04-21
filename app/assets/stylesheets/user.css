@@ -1,0 +1,89 @@
+main {
+    padding: 20px 40px;
+}
+h1 {
+    margin-bottom: 20px;
+}
+form {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+input {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    display: block;
+}
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding-block: 5px;
+}
+input[type="submit"] {
+    padding: 2px 5px;
+    width: 80px;
+    left: calc(100% - 80px);
+}
+#login input[type="submit"] {
+    margin-top: 58px;
+}
+aside, #login, #signup {
+    display: inline-block;
+    vertical-align: top;
+}
+aside {
+    margin-top: 30vh;
+    width: 50vw;
+    padding-left: 40px;
+}
+aside h1 {
+    font-size: 3em;
+}
+#login, #signup {
+    box-shadow: 0px 4px 36px 0px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    background-color: #fbfbfb;
+    padding: 40px;
+    width: 442px;
+    height: 285px;
+    margin-top: calc(50vh - 190px);
+    margin-left: calc(25vw - 221px);
+}
+label {
+    display: inline-block;
+    position: absolute;
+    height: 1.1em;
+    overflow-x: hidden;
+    max-width: calc(100% - 80px);
+    z-index: 5;
+    left: 45px;
+    background: linear-gradient(180deg, #fbfbfb 0%, white 50%);
+}
+label:has(.errors) {
+    display: inline-block;
+}
+:root:has(label):has(span.errors) ::placeholder {
+    color: transparent;
+}
+:root:has(input#username:placeholder-shown):not(:has(span.errors)) label[for="username"],
+:root:has(input#password:placeholder-shown):not(:has(span.errors)) label[for="password"],
+:root:has(input#password_confirmation:placeholder-shown):not(:has(span.errors)) label[for="password_confirmation"] {
+    display: none;
+}
+label[for="username"] {
+    top: 32px;
+}
+label[for="password"] {
+    top: 80px;
+}
+label[for="password_confirmation"] {
+    top: 128px;
+}
+.errors {
+    color: red;
+}
+span.errors {
+    font-size: 0.9em;
+}
+p.errors {
+    position: absolute;
+}

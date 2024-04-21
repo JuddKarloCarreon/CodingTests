@@ -1,0 +1,41 @@
+<% content_for :title, "CodingTests: Login" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", "user" %>
+<% end %>
+
+<main>
+    <aside>
+        <h1>CodingTests</h1>
+        <h2>Refine your coding skills along with our talented community</h2>
+    </aside>
+    <form id="<%= @page %>" action="/users/<%= @page %>" method="post" data-turbo="false">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <label for="username">
+            Username: 
+        <% unless @check.blank? %>
+            <span class="errors"><%= @check.errors.messages_for(:username).join(', ') %></span>
+        <% end %>
+        </label>
+        <input type="text" name="user[username]" id="username" placeholder="Username">
+        <label for="password">
+            Password: 
+        <% unless @check.blank? %>
+            <span class="errors"><%= @check.errors.messages_for(:password).join(', ') %></span>
+        <% end %>
+        </label>
+        <input type="password" name="user[password]" id="password" placeholder="Password">
+    <% if @page == 'signup' %>
+        <label for="password_confirmation">
+            Confirm Password: 
+        <% unless @check.blank? %>
+            <span class="errors"><%= @check.errors.messages_for(:password_confirmation).join(', ') %></span>
+        <% end %>
+        </label>
+        <input type="password" name="user[password_confirmation]" id="password_confirmation" placeholder="Confirm Password">
+    <% elsif !@invalid_credentials.blank? %>
+        <p class="errors">Invalid Credentials</p>
+    <% end %>
+        <input type="submit" value="<%= @page.capitalize %>">
+        <a href="/users/<%= (@page == 'login') ? 'signup' : 'login' %>">Create a new account</a>
+    </form>
+</main>

@@ -1,0 +1,20 @@
+<% content_for :title, "CodingTests" %>
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "primary", "main", "slide" %>
+<% end %>
+<% content_for :javascripts do %>
+    <%= javascript_include_tag "socket.io", "receive_live", "slide", "lobby" %>
+<% end %>
+
+<%= render "shared/header" %>
+
+<main>
+    <section>
+        <h1>Solve these problems!</h1>
+        <%= render partial: "shared/problems_list" %>
+    </section>
+    <aside>
+        <h1>See coding live!</h1>
+        <%= render partial: "shared/live_list" %>
+    </aside>
+</main>
